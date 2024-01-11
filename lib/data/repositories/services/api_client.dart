@@ -4,6 +4,7 @@ import 'package:flutter_pokemon_complete/common/constants/app_constants.dart';
 import 'package:flutter_pokemon_complete/modules/home_page/models/pokemon.dart';
 import 'package:flutter_pokemon_complete/modules/home_page/models/pokemonData.dart';
 import 'package:flutter_pokemon_complete/modules/home_page/models/pokemon_response.dart';
+import 'package:flutter_pokemon_complete/modules/pokemon_detail_page/models/pokemon_charactor.dart';
 import 'package:http/http.dart' as http;
 
 class APIClient {
@@ -15,6 +16,24 @@ class APIClient {
     http.Client? httpClient,
   })  : _httpClient = httpClient ?? http.Client(),
         baseUrl = baseUrl ?? pokemonBaseURL;
+
+  Future<PokemonCharacter?> getPokemonByName(String pokemonName) async {
+    try {
+      final response = await _httpClient.get(
+        Uri.parse('$baseUrl${PATHS.pokemon}/$pokemonName'),
+      );
+      if (response.statusCode == 200) {
+        PokemonCharacter? result =
+            PokemonCharacter.fromJson(jsonDecode(response.body));
+        return result;
+      } else {
+        return null;
+      }
+    } catch (e) {
+      return null;
+    }
+  }
+
   Future<PokemonData> getAllPokemon() async {
     try {
       final response =

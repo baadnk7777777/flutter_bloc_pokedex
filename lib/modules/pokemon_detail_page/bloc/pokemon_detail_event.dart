@@ -1,8 +1,14 @@
 part of 'pokemon_detail_bloc.dart';
 
-sealed class PokemonDetailEvent extends Equatable {
+@immutable
+abstract class PokemonDetailEvent extends Equatable {
   const PokemonDetailEvent();
 
   @override
   List<Object> get props => [];
+}
+
+class GetPokemonByNameEvent extends PokemonDetailEvent {
+  final String pokemonName;
+  const GetPokemonByNameEvent(this.pokemonName);
 }

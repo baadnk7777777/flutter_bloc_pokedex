@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokemon_complete/common/constants/app_constants.dart';
 import 'package:flutter_pokemon_complete/modules/home_page/bloc/home_page_bloc.dart';
-import 'package:flutter_pokemon_complete/modules/home_page/views/widgets/custom_SliverOverlapAbsorber.dart';
 import 'package:flutter_pokemon_complete/modules/home_page/views/widgets/pokemon_card.dart';
 import 'package:flutter_pokemon_complete/modules/home_page/views/widgets/pokemon_search_filed.dart';
 import 'package:flutter_pokemon_complete/modules/splash_page/splash_page.dart';

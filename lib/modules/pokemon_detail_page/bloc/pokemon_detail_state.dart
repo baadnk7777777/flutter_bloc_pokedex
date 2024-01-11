@@ -1,10 +1,22 @@
 part of 'pokemon_detail_bloc.dart';
 
-sealed class PokemonDetailState extends Equatable {
-  const PokemonDetailState();
-  
-  @override
-  List<Object> get props => [];
-}
+class PokemonDetailState extends Equatable {
+  PokemonDetailState({
+    PokemonCharacter? pokemonCharacter,
+    this.status = StateStatus.initial,
+  }) : pokemonCharacter = pokemonCharacter ?? PokemonCharacter();
+  final PokemonCharacter pokemonCharacter;
+  final StateStatus status;
 
-final class PokemonDetailInitial extends PokemonDetailState {}
+  PokemonDetailState copyWith({
+    PokemonCharacter? pokemonCharacter,
+    StateStatus? status,
+  }) =>
+      PokemonDetailState(
+        pokemonCharacter: pokemonCharacter ?? this.pokemonCharacter,
+        status: status ?? this.status,
+      );
+
+  @override
+  List<Object?> get props => [pokemonCharacter, status];
+}

@@ -4,6 +4,8 @@ import 'package:flutter_pokemon_complete/data/repositories/services/api_client.d
 import 'package:flutter_pokemon_complete/modules/home_page/bloc/home_page_bloc.dart';
 import 'package:flutter_pokemon_complete/modules/home_page/repositories/impl/pokemon_repo_impl.dart';
 import 'package:flutter_pokemon_complete/modules/home_page/views/home_page.dart';
+import 'package:flutter_pokemon_complete/modules/pokemon_detail_page/bloc/pokemon_detail_bloc.dart';
+import 'package:flutter_pokemon_complete/modules/pokemon_detail_page/repositories/impl/pokemon_detail_repo_impl.dart';
 import 'package:flutter_pokemon_complete/modules/pokemon_detail_page/views/pokemon_detail_page.dart';
 
 class AppRouter {
@@ -12,19 +14,34 @@ class AppRouter {
       apiClient: APIClient(),
     ),
   );
+  final PokemonDetailBloc _pokemonDetailBloc = PokemonDetailBloc(
+    pokemonDetailRepositoryImpl: PokemonDetailRepositoryImpl(
+      apiClient: APIClient(),
+    ),
+  );
   Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(
-          builder: (_) => BlocProvider.value(
-            value: _homePageBloc,
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider.value(
+                value: _homePageBloc,
+              ),
+              BlocProvider.value(
+                value: _pokemonDetailBloc,
+              ),
+            ],
             child: const HomeScreen(),
           ),
         );
 
       case '/pokemonDetailsScreen':
         return MaterialPageRoute(
-          builder: (_) => const PokemonDetailScreen(),
+          builder: (_) => BlocProvider.value(
+            value: _pokemonDetailBloc,
+            child: const PokemonDetailScreen(),
+          ),
         );
 
       default:

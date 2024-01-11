@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokemon_complete/modules/home_page/models/pokemon.dart';
+import 'package:flutter_pokemon_complete/modules/pokemon_detail_page/bloc/pokemon_detail_bloc.dart';
 
 class PokemonCard extends StatelessWidget {
   final Pokemons pokemon;
@@ -9,16 +11,11 @@ class PokemonCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed('/pokemonDetailsScreen');
-        // Navigator.of(context).push(MaterialPageRoute(
-        //   // Bloc Route Access.
-        //   builder: (_) => BlocProvider.value(
-        //     value: BlocProvider.of<PokemonBloc>(context),
-        //     child: DetailPokemon(
-        //       pokemon: pokemon,
-        //     ),
-        //   ),
-        // ));
+        Navigator.of(context).pushNamed('/pokemonDetailsScreen',
+            arguments: {'pokemonName': pokemon.name});
+        context.read<PokemonDetailBloc>().add(
+              GetPokemonByNameEvent(pokemon.name ?? 'unknown'),
+            );
       },
       child: Padding(
         padding: const EdgeInsets.all(14.0),
@@ -50,7 +47,6 @@ class PokemonCard extends StatelessWidget {
                   ),
                 ),
               ),
-
               Positioned(
                 left: 110,
                 top: 50,
@@ -60,14 +56,6 @@ class PokemonCard extends StatelessWidget {
                   height: 100,
                 ),
               ),
-              // Positioned(
-              //   left: 95,
-              //   top: 35,
-              //   child: Text(pokemon.imageUrl!),
-              //   width: 60,
-              //   height: 60,
-              // ),
-
               Positioned(
                 left: 90,
                 top: 20,
