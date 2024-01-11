@@ -1,0 +1,36 @@
+import 'dart:convert';
+
+import 'package:flutter_pokemon_complete/common/constants/app_constants.dart';
+import 'package:flutter_pokemon_complete/modules/home_page/models/pokemon.dart';
+import 'package:flutter_pokemon_complete/modules/home_page/models/pokemonData.dart';
+import 'package:flutter_pokemon_complete/modules/home_page/models/pokemon_response.dart';
+import 'package:http/http.dart' as http;
+
+class APIClient {
+  final String baseUrl;
+  final http.Client _httpClient;
+
+  APIClient({
+    String? baseUrl,
+    http.Client? httpClient,
+  })  : _httpClient = httpClient ?? http.Client(),
+        baseUrl = baseUrl ?? pokemonBaseURL;
+  Future<PokemonData> getAllPokemon() async {
+    try {
+      final response =
+          await _httpClient.get(Uri.parse(baseUrl + PATHS.pokemon));
+      await Future.delayed(const Duration(seconds: 1));
+      if (response.statusCode == 200) {
+        final jsonData = jsonDecode(response.body);
+        final pokemonResponse = PokemonResponse.fromJson(jsonData);
+        final List<Pokemons> pokemonList = (jsonData['results'] as List)
+            .map((pokemonData) => Pokemons.fromJson(pokemonData))
+            .toList();
+        return PokemonData(response: pokemonResponse, pokemonList: pokemonList);
+      }
+      return PokemonData(response: null, pokemonList: []);
+    } catch (e) {
+      return PokemonData(response: null, pokemonList: []);
+    }
+  }
+}
