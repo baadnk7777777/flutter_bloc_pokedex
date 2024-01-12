@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokemon_complete/common/constants/app_constants.dart';
@@ -7,7 +6,7 @@ import 'package:flutter_pokemon_complete/modules/home_page/models/pokemon.dart';
 
 class PokemonTextField extends StatefulWidget {
   const PokemonTextField({super.key});
-
+  // set current page limit for api.
   @override
   State<PokemonTextField> createState() => _PokemonTextFieldState();
 }
@@ -46,7 +45,7 @@ class _PokemonTextFieldState extends State<PokemonTextField> {
               );
         } else {
           context.read<HomePageBloc>().add(
-                const GetAllPokemonEvent(),
+                const GetAllPokemonEvent(0),
               );
         }
       },

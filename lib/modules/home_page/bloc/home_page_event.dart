@@ -9,7 +9,8 @@ abstract class HomePageEvent extends Equatable {
 }
 
 class GetAllPokemonEvent extends HomePageEvent {
-  const GetAllPokemonEvent();
+  final int currentPage;
+  const GetAllPokemonEvent(this.currentPage);
 }
 
 class SearchPokemonEvent extends HomePageEvent {

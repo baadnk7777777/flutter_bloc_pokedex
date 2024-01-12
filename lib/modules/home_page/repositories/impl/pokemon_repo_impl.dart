@@ -41,9 +41,10 @@ class PokemonRepositoryImpl implements PokemonRepository {
   }
 
   @override
-  Future<Either<String, List<Pokemons>>> getAllPokemon() async {
+  Future<Either<String, List<Pokemons>>> getAllPokemon(int currentPage) async {
     try {
-      final PokemonData pokemonData = await apiClient.getAllPokemon();
+      final PokemonData pokemonData =
+          await apiClient.getAllPokemon(currentPage);
       if (pokemonData.pokemonList.isNotEmpty) {
         return Right(pokemonData.pokemonList);
       }

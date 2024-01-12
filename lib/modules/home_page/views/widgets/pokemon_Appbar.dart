@@ -1,9 +1,5 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_pokemon_complete/common/constants/app_constants.dart';
-import 'package:flutter_pokemon_complete/modules/home_page/bloc/home_page_bloc.dart';
-import 'package:flutter_pokemon_complete/modules/home_page/models/pokemon.dart';
 import 'package:flutter_pokemon_complete/modules/home_page/views/widgets/pokemon_textField.dart';
 
 class PokemonAppbar extends StatelessWidget {

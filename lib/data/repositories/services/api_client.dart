@@ -1,3 +1,5 @@
+// ignore_for_file: always_specify_types
+
 import 'dart:convert';
 
 import 'package:flutter_pokemon_complete/common/constants/app_constants.dart';
@@ -34,14 +36,20 @@ class APIClient {
     }
   }
 
-  Future<PokemonData> getAllPokemon() async {
+  Future<PokemonData> getAllPokemon(int currentPage) async {
     try {
-      final http.Response response =
-          await _httpClient.get(Uri.parse(baseUrl + PATHS.pokemon));
+      final Map<String, String> queryParams = {
+        'offset': '${currentPage * 10}',
+        'limit': '10'
+      };
+      final http.Response response = await _httpClient.get(
+          Uri.parse(baseUrl + PATHS.pokemon)
+              .replace(queryParameters: queryParams));
       await Future.delayed(const Duration(seconds: 1));
       if (response.statusCode == 200) {
         final jsonData = jsonDecode(response.body);
-        final PokemonResponse pokemonResponse = PokemonResponse.fromJson(jsonData);
+        final PokemonResponse pokemonResponse =
+            PokemonResponse.fromJson(jsonData);
         final List<Pokemons> pokemonList = (jsonData['results'] as List)
             .map((pokemonData) => Pokemons.fromJson(pokemonData))
             .toList();
