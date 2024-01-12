@@ -16,53 +16,6 @@ These instructions will help you set up and run the project on your local machin
 1. **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/your-username/your-project.git](https://github.com/baadnk7777777/flutter_bloc_pokedex.git)
-    ```
-
-2. **Install dependencies:**
-
-    ```bash
-    flutter pub get
-    ```
-
-3. **Run the application:**
-
-    ```bash
-    flutter run
-    ```
-
-## Folder Structure
-
-
-Creating a README for a Flutter project using the BLoC pattern involves providing information about the project, its structure, how to use it, and any other relevant details. Below is a template you can use as a starting point. Remember to customize it based on your project's specifics.
-
-markdown
-Copy code
-# Your Project Name
-
-A brief description of your Flutter project, mentioning the purpose and main features.
-
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Getting Started](#getting-started)
-- [Folder Structure](#folder-structure)
-- [Dependencies](#dependencies)
-- [Usage](#usage)
-- [Contribute](#contribute)
-- [License](#license)
-
-## Introduction
-
-Briefly introduce your project, including its purpose, key features, and any relevant information.
-
-## Getting Started
-
-These instructions will help you set up and run the project on your local machine.
-
-1. **Clone the repository:**
-
-    ```bash
     git clone https://github.com/your-username/your-project.git
     ```
 
@@ -86,35 +39,35 @@ These instructions will help you set up and run the project on your local machin
 
 ## Folder Structure
 
-lib/
-|-- common/
-| |-- config
-| |-- constants
-| |-- core
-| |-- style
-|-- data/
-| |-- models
-| |-- repositories
-| | |-- services
-|-- modules/
-| |-- home_page
-| | |-- bloc
-| | |-- models
-| | |-- repositories
-| | | |-- impl
-| | |-- views
-| | | |-- widgets
-| |-- pokemon_detail_page
-| | |-- bloc
-| | |-- models
-| | |-- repositories
-| | | |-- impl
-| | |-- views
-| | | |-- widgets
-| |-- splash_page
-|-- router/
-|-- utils/
-|-- main.dart
+- lib/
+  - common/
+    - config
+    - constants
+    - core
+    - style
+  - data/
+    - models
+    - repositories/
+      - services
+  - modules/
+    - home_page/
+      - bloc
+      - models
+      - repositories/
+        - impl
+      - views/
+        - widgets
+    - pokemon_detail_page/
+      - bloc
+      - models
+      - repositories/
+        - impl
+      - views/
+        - widgets
+    - splash_page
+  - router/
+  - utils/
+  - main.dart
 
 ## Dependencies
 
