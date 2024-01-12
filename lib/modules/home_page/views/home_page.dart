@@ -32,8 +32,8 @@ class _HomeScreenState extends State<HomeScreen> {
       body: NestedScrollView(
         clipBehavior: Clip.none,
         floatHeaderSlivers: true,
-        headerSliverBuilder: (BuildContext context, innerBoxIsScrolled) {
-          return [
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
             SliverOverlapAbsorber(
               handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
               sliver: const SliverAppBar(
@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         body: Expanded(
           child: BlocBuilder<HomePageBloc, HomePageState>(
-            builder: (context, state) {
+            builder: (BuildContext context, HomePageState state) {
               switch (state.status) {
                 case StateStatus.loading:
                   return const Center(
@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       childAspectRatio: 1.5,
                     ),
                     itemCount: state.pokemonList.length,
-                    itemBuilder: (context, index) {
+                    itemBuilder: (BuildContext context, int index) {
                       return PokemonCard(pokemon: state.pokemonList[index]);
                     },
                   );

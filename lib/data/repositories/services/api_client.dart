@@ -19,7 +19,7 @@ class APIClient {
 
   Future<PokemonCharacter?> getPokemonByName(String pokemonName) async {
     try {
-      final response = await _httpClient.get(
+      final http.Response response = await _httpClient.get(
         Uri.parse('$baseUrl${PATHS.pokemon}/$pokemonName'),
       );
       if (response.statusCode == 200) {
@@ -36,20 +36,20 @@ class APIClient {
 
   Future<PokemonData> getAllPokemon() async {
     try {
-      final response =
+      final http.Response response =
           await _httpClient.get(Uri.parse(baseUrl + PATHS.pokemon));
       await Future.delayed(const Duration(seconds: 1));
       if (response.statusCode == 200) {
         final jsonData = jsonDecode(response.body);
-        final pokemonResponse = PokemonResponse.fromJson(jsonData);
+        final PokemonResponse pokemonResponse = PokemonResponse.fromJson(jsonData);
         final List<Pokemons> pokemonList = (jsonData['results'] as List)
             .map((pokemonData) => Pokemons.fromJson(pokemonData))
             .toList();
         return PokemonData(response: pokemonResponse, pokemonList: pokemonList);
       }
-      return PokemonData(response: null, pokemonList: []);
+      return PokemonData(response: null, pokemonList: <Pokemons>[]);
     } catch (e) {
-      return PokemonData(response: null, pokemonList: []);
+      return PokemonData(response: null, pokemonList: <Pokemons>[]);
     }
   }
 }

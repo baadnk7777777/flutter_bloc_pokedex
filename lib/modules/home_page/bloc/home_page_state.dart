@@ -2,7 +2,7 @@ part of 'home_page_bloc.dart';
 
 class HomePageState extends Equatable {
   HomePageState({
-    this.pokemonList = const [],
+    this.pokemonList = const <Pokemons>[],
     this.status = StateStatus.initial,
     PokemonResponse? pokemonResponse,
   }) : pokemonResponse = pokemonResponse ??
@@ -10,7 +10,7 @@ class HomePageState extends Equatable {
               count: null,
               next: null,
               previous: null,
-              pokemon: const [],
+              pokemon: const <Pokemons>[],
             );
 
   final List<Pokemons> pokemonList;
@@ -29,5 +29,5 @@ class HomePageState extends Equatable {
       );
 
   @override
-  List<Object?> get props => [pokemonList, status, pokemonResponse];
+  List<Object?> get props => <Object?>[pokemonList, status, pokemonResponse];
 }

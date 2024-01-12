@@ -25,12 +25,12 @@ class PokemonDetailBloc extends Bloc<PokemonDetailEvent, PokemonDetailState> {
     final Either<String, PokemonCharacter> result =
         await pokemonDetailRepositoryImpl.getPokemonByName(event.pokemonName);
     result.fold(
-        (left) => emit(
-              state.copyWith(status: StateStatus.failure),
-            ),
-        (right) => emit(
-              state.copyWith(
-                  status: StateStatus.success, pokemonCharacter: right),
-            ));
+      (String left) => emit(
+        state.copyWith(status: StateStatus.failure),
+      ),
+      (PokemonCharacter right) => emit(
+        state.copyWith(status: StateStatus.success, pokemonCharacter: right),
+      ),
+    );
   }
 }

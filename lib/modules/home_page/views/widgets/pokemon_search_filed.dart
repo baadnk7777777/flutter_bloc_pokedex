@@ -14,14 +14,14 @@ class PokemonSearchField extends StatelessWidget {
         child: Opacity(
           opacity: 1,
           child: Stack(
-            children: [
+            children: <Widget>[
               const Positioned(
                   bottom: 50,
                   left: 18,
                   right: 18,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: <Widget>[
                       Text(
                         "Pokédex",
                         textAlign: TextAlign.left,
@@ -45,7 +45,7 @@ class PokemonSearchField extends StatelessWidget {
                     child: Container(
                       decoration: const BoxDecoration(
                         color: Colors.white,
-                        boxShadow: [
+                        boxShadow: <BoxShadow>[
                           BoxShadow(
                             color: Colors.black,
                             spreadRadius: 1,

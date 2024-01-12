@@ -9,7 +9,7 @@ class PokemonDetailCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: [
+      children: <Widget>[
         Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -27,7 +27,7 @@ class PokemonDetailCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
-                children: [
+                children: <Widget>[
                   const SizedBox(
                     height: 100,
                   ),
@@ -57,7 +57,7 @@ class PokemonDetailCard extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
+                    children: <Widget>[
                       pokemonCharacter.id != null
                           ? PokemonAbiliities(
                               title:

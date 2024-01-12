@@ -20,7 +20,7 @@ class customSliverOverlap extends StatelessWidget {
             color: Colors.white,
             child: Stack(
               clipBehavior: Clip.none,
-              children: [
+              children: <Widget>[
                 Positioned(
                   bottom: 60,
                   left: 250,
@@ -51,7 +51,7 @@ class customSliverOverlap extends StatelessWidget {
                   right: 14.0,
                   child: Container(
                     decoration: const BoxDecoration(
-                      boxShadow: [
+                      boxShadow: <BoxShadow>[
                         BoxShadow(
                           color: Colors.black,
                           spreadRadius: 1,

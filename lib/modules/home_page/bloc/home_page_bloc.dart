@@ -23,10 +23,10 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
     final Either<String, List<Pokemons>> result =
         await pokemonRepositoryImpl.getAllPokemon();
     result.fold(
-        (left) => emit(
-              state.copyWith(status: StateStatus.failure, pokemonList: []),
+        (String left) => emit(
+              state.copyWith(status: StateStatus.failure, pokemonList: <Pokemons>[]),
             ),
-        (right) => emit(
+        (List<Pokemons> right) => emit(
               state.copyWith(status: StateStatus.success, pokemonList: right),
             ));
   }

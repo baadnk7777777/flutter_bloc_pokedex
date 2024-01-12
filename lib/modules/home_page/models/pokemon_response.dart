@@ -21,12 +21,12 @@ class PokemonResponse {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['count'] = this.count;
-    data['next'] = this.next;
-    data['previous'] = this.previous;
-    if (this.pokemon != null) {
-      data['results'] = this.pokemon!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['count'] = count;
+    data['next'] = next;
+    data['previous'] = previous;
+    if (pokemon != null) {
+      data['results'] = pokemon!.map((Pokemons v) => v.toJson()).toList();
     }
     return data;
   }

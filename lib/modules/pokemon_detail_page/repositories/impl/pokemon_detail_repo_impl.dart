@@ -11,9 +11,9 @@ class PokemonDetailRepositoryImpl implements PokemonDetailRepository {
   Future<Either<String, PokemonCharacter>> getPokemonByName(
       String pokemonName) async {
     try {
-      final response = await apiClient.getPokemonByName(pokemonName);
+      final PokemonCharacter? response =
+          await apiClient.getPokemonByName(pokemonName);
       if (response != null) {
-        print(response);
         return Right(response);
       } else {
         return const Left("Not found");

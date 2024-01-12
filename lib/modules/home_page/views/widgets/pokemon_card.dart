@@ -12,7 +12,7 @@ class PokemonCard extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.of(context).pushNamed('/pokemonDetailsScreen',
-            arguments: {'pokemonName': pokemon.name});
+            arguments: <String, String?>{'pokemonName': pokemon.name});
         context.read<PokemonDetailBloc>().add(
               GetPokemonByNameEvent(pokemon.name ?? 'unknown'),
             );
@@ -23,7 +23,7 @@ class PokemonCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
-            boxShadow: [
+            boxShadow: <BoxShadow>[
               BoxShadow(
                 color: Colors.black.withOpacity(0.2),
                 spreadRadius: 1,
@@ -33,7 +33,7 @@ class PokemonCard extends StatelessWidget {
             ],
           ),
           child: Stack(
-            children: [
+            children: <Widget>[
               Positioned(
                 left: 10,
                 top: 10,

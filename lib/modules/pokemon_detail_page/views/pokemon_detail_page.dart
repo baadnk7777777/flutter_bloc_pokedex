@@ -32,7 +32,7 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
       appBar: AppBar(
         backgroundColor: Colors.yellow,
         title: BlocBuilder<PokemonDetailBloc, PokemonDetailState>(
-          builder: (context, state) {
+          builder: (BuildContext context, PokemonDetailState state) {
             return Text(
               state.pokemonCharacter.name ?? "No name",
               style: const TextStyle(
@@ -46,7 +46,7 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
         ),
       ),
       body: BlocBuilder<PokemonDetailBloc, PokemonDetailState>(
-          builder: (context, state) {
+          builder: (BuildContext context, PokemonDetailState state) {
         switch (state.status) {
           case StateStatus.loading:
             return const LoadingPage();
