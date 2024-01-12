@@ -11,3 +11,9 @@ abstract class HomePageEvent extends Equatable {
 class GetAllPokemonEvent extends HomePageEvent {
   const GetAllPokemonEvent();
 }
+
+class SearchPokemonEvent extends HomePageEvent {
+  final String pokemonName;
+  final List<Pokemons> tempPokemonLists;
+  const SearchPokemonEvent(this.pokemonName, this.tempPokemonLists);
+}

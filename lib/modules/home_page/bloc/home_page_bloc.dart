@@ -14,6 +14,38 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   final PokemonRepositoryImpl pokemonRepositoryImpl;
   HomePageBloc({required this.pokemonRepositoryImpl}) : super(HomePageState()) {
     on<GetAllPokemonEvent>(_onGetAllPokemon);
+    on<SearchPokemonEvent>(_onSearchPokemon);
+  }
+
+  Future<void> _onSearchPokemon(
+      SearchPokemonEvent event, Emitter<HomePageState> emit) async {
+    emit(state.copyWith(status: StateStatus.loading));
+    final String tragetPokemon = event.pokemonName;
+    final List<Pokemons> tempPokemonLists = event.tempPokemonLists;
+
+    List<Pokemons> pokemonsFound = tempPokemonLists
+        .where(
+          (Pokemons pokemon) => pokemon.name!.contains(tragetPokemon),
+        )
+        .toList();
+
+    if (pokemonsFound.isEmpty) {
+      final Either<String, List<Pokemons>> result = await pokemonRepositoryImpl
+          .getAllPokemonListsByName(event.pokemonName);
+      result.fold(
+        (String left) => emit(state
+            .copyWith(status: StateStatus.failure, pokemonList: <Pokemons>[])),
+        (List<Pokemons> right) => emit(
+            state.copyWith(status: StateStatus.success, pokemonList: right)),
+      );
+    } else {
+      emit(
+        state.copyWith(
+          status: StateStatus.success,
+          pokemonList: pokemonsFound,
+        ),
+      );
+    }
   }
 
   Future<void> _onGetAllPokemon(
@@ -24,7 +56,8 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
         await pokemonRepositoryImpl.getAllPokemon();
     result.fold(
         (String left) => emit(
-              state.copyWith(status: StateStatus.failure, pokemonList: <Pokemons>[]),
+              state.copyWith(
+                  status: StateStatus.failure, pokemonList: <Pokemons>[]),
             ),
         (List<Pokemons> right) => emit(
               state.copyWith(status: StateStatus.success, pokemonList: right),

@@ -1,7 +1,13 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_pokemon_complete/common/constants/app_constants.dart';
+import 'package:flutter_pokemon_complete/modules/home_page/bloc/home_page_bloc.dart';
+import 'package:flutter_pokemon_complete/modules/home_page/models/pokemon.dart';
+import 'package:flutter_pokemon_complete/modules/home_page/views/widgets/pokemon_textField.dart';
 
-class PokemonSearchField extends StatelessWidget {
-  const PokemonSearchField({super.key});
+class PokemonAppbar extends StatelessWidget {
+  const PokemonAppbar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,18 +60,7 @@ class PokemonSearchField extends StatelessWidget {
                           ),
                         ],
                       ),
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(
-                              vertical: 17.5, horizontal: 20),
-                          hintText: "Search...",
-                          border: InputBorder.none,
-                          hintStyle: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18.0,
-                              fontFamily: 'Poppins'),
-                        ),
-                      ),
+                      child: const PokemonTextField(),
                     ),
                   ),
                 ),

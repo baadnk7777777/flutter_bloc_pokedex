@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokemon_complete/common/constants/app_constants.dart';
 import 'package:flutter_pokemon_complete/modules/home_page/bloc/home_page_bloc.dart';
 import 'package:flutter_pokemon_complete/modules/home_page/views/widgets/pokemon_card.dart';
-import 'package:flutter_pokemon_complete/modules/home_page/views/widgets/pokemon_search_filed.dart';
+import 'package:flutter_pokemon_complete/modules/home_page/views/widgets/pokemon_Appbar.dart';
 import 'package:flutter_pokemon_complete/modules/splash_page/splash_page.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 backgroundColor: Colors.white,
                 collapsedHeight: toolbarHeight,
                 expandedHeight: toolbarHeight,
-                flexibleSpace: PokemonSearchField(),
+                flexibleSpace: PokemonAppbar(),
                 floating: true,
                 pinned: false,
                 snap: true,
