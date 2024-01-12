@@ -1,16 +1,11 @@
-# flutter_pokemon_complete
+# flutter_pokemon_project
 
-A new Flutter project.
+# Using BLOC for state management
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+![Pokedex Listview infinity](https://github.com/baadnk7777777/flutter_bloc_pokedex/assets/70257547/9ce92726-3563-4826-b6c1-0b0016e57cff)
 
-A few resources to get you started if this is your first Flutter project:
+![Pokedex Search](https://github.com/baadnk7777777/flutter_bloc_pokedex/assets/70257547/f5e3c985-c860-4248-93d1-d04ff8950920)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
